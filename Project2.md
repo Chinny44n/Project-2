@@ -101,7 +101,7 @@
 
 `sudo nginx -t`
 
-![Image15](./Images/Project2images/Image15.PNG)
+![image15](./Images/Project2images/image15.PNG)
 
 ### Disabled default NGIX host  currently configured to listen on port 80
 
@@ -123,4 +123,127 @@
 ### Using my public IP address in a web browser, the screenshot below shos the NGIX server is working properly
 
 ![Image17](./Images/Project2images/Image17.PNG)
+
+# STEP 5- Testing PHP with NGIX
+
+### LAMP stack is completely installed and fully operational at this point. Tested it to validate that Nginx can correctly hand .php files off to the PHP processor by opening a new file (info.php) within the document root
+
+`sudo nano /var/www/projectLEMP/info.php`
+
+![Image18](./Images/Project2images/Image18.PNG)
+
+### This valid PHP code will return iformation about the server
+
+`<?php`    
+
+ `phpinfo();`
+
+![Image19](./Images/Project2images/Image19.PNG)
+
+### Using my Public IP address followed by /info.php, the output shows PHP is working with NGIX as expected.
+
+![Image20](./Images/Project2images/Image20.PNG)
+
+# STEP 6- Retrieving data from My SQL database with PHP
+
+### Connected to the MySQL console using the root account. Then a new database named " example_database was created
+
+`sudo mysql`
+
+`CREATE DATABASE `example_database`;`
+
+###  A new user named "example_user" was created for the newly created database with password defined as "password". mysql_native_password is the default authentication method.
+
+` CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`
+
+###  Permission is then given to the new user over the newly created database. This permission gives full priviledges over the database while preventing the user from creating or modifying other databses on the server.
+
+` GRANT ALL ON example_database.* TO 'example_user'@'%';`
+
+This command was used to exit the MySQL shell
+
+`mysql> exit`
+
+The screenshot of the above commands ran:
+
+![Image22](./Images/Project2images/Image22.PNG)
+
+###  Test to see if the new user has proper permissions by logging into the MySQL console again using the following custom user credentials.
+
+`mysql -u example_user -p`
+
+![Image23](./Images/Project2images/Image23.PNG)
+
+###  Access to the "example_database" database was confirmed using the following command:
+
+` SHOW DATABASES;`
+
+![Image24](./Images/Project2images/Image24.PNG)
+
+###  A test table named "todo_list" was created by running  the following command.
+
+`CREATE TABLE example_database.todo_list (item_id INT AUTO_INCREMENT, content VARCHAR(255),PRIMARY KEY(item_id)); ,`
+
+###  The following command was instered into the table created above a few times using different values ("My second important item", "my third important item", and "and this one more thing")
+
+`INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
+
+### The command below was used to confirm the data was saved successfully
+
+
+`SELECT * FROM example_database.todo_list;`
+
+![Image25](./Images/Project2images/Image25.PNG)
+
+### The follwoing command was ran in the todo-list php script to connect the PHP script to the MySQL database. It aslo queries the content of the "todo_list and displays the results in a list. Then the file was saved and closed 
+
+`<?php
+
+
+$user = "example_user";
+
+
+$password = "password";
+
+$database = "example_database";
+
+$table = "todo_list";`
+
+`try {`
+
+`$db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);`
+
+`echo "<h2>TODO</h2><ol>";`
+
+`foreach($db->query("SELECT content FROM $table") as $row) {`
+
+`   echo "<li>" . $row['content'] . "</li>";
+  }`
+  
+  `echo "</ol>";`
+
+  `} catch (PDOException $e) {`
+
+ `print "Error!: " . $e->getMessage() . "<br/>";` 
+
+`die();`
+
+`}
+
+![Image26](./Images/Project2images/Image26.PNG)
+
+### Using my Public IP address followed by /todo_list.php, the output shows data can be retrived from MySQL database using PHP correctly.
+
+![Image27](./Images/Project2images/Image27.PNG)
+
+
+
+
+
+
+
+
+
+
+
 
