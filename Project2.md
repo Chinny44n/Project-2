@@ -27,10 +27,33 @@
 
 ![Image5](./Images/Project2images/Image5.PNG)
 
-### This is the output to chrck if we can access the NGIX locally
+### This is the output to check if we can access the NGIX locally
 
 ![Image6](./Images/Project2images/Image6.PNG)
 
 ### Test that NGIX server is running over the browser
 
 ![Image7](./Images/Project2images/Image7.PNG)
+
+# STEP 2-Installing MySQL
+
+### The following command installs MySQL in the server
+
+`sudo apt install mysql-server`
+
+![Image9a](./Images/Project2images/Image9a.PNG)
+
+![Image9b](./Images/Project2images/Image9b.PNG)
+
+### The following command runs a security script that removes some insecure default settings and lock down access to the database system
+
+![Image10a](./Images/Project2images/Image10a.PNG)
+
+![Image10b](./Images/Project2images/Image10b.PNG)
+
+### This code verifies that we can log in to the MySQL server
+
+`sudo mysql`
+
+![Image11](./Images/Project2images/Image11.PNG)
+
