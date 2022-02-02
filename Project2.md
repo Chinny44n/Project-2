@@ -66,3 +66,5 @@
 ![Image12a](./Images/Project2images/Image12a.PNG)
 
 ![Image12b](./Images/Project2images/Image12b.PNG)
+
+**The *php components* have been installed.**
