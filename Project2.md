@@ -57,3 +57,12 @@
 
 ![Image11](./Images/Project2images/Image11.PNG)
 
+# Step 3- Installing PHP
+
+### The command below installs *php-fpm* and *php-mysql*
+
+`sudo apt install php-fpm php-mysql`
+
+![Image12a](./Images/Project2images/Image12a.PNG)
+
+![Image12b](./Images/Project2images/Image12b.PNG)
