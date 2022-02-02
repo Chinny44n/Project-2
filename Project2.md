@@ -168,7 +168,7 @@ The screenshot of the above commands ran:
 
 ![Image22](./Images/Project2images/Image22.PNG)
 
-###  Test to see if the new user has proper permissions by logging into the MySQL console again using the following custom user credentials.
+###  Test to see if the new user has proper permissions by logging into the MySQL console again using the following correct user credentials.
 
 `mysql -u example_user -p`
 
